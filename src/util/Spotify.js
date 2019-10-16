@@ -1,6 +1,6 @@
 let accessToken;
 const clientId = "55ea3ac239044c8ca84ab4a6125c783f";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "https://epp-spotlists.herokuapp.com/";
 
 const Spotify = {
   getAccessToken() {
