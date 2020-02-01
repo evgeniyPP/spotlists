@@ -9,7 +9,6 @@ const Playlist: React.FC = _ => {
   const dispatch = useDispatch();
   const playlistName = useSelector((state: IState) => state.playlistName);
   const playlistTracks = useSelector((state: IState) => state.playlistTracks);
-  console.log(playlistName);
 
   return (
     <div className={styles.playlist}>
