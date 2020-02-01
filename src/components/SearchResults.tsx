@@ -16,38 +16,3 @@ const SearchResults: React.FC = _ => {
 };
 
 export default SearchResults;
-
-// class SearchResults extends React.Component {
-//     render() {
-//       const { searchResults, onAdd } = this.props;
-
-//       return (
-//         <div className="SearchResults">
-//             <h2>Results</h2>
-//             <TrackList tracks={searchResults} onAdd={onAdd} isRemoval={false} />
-//         </div>
-//       )
-//     }
-// }
-
-// class TrackList extends React.Component {
-//   render() {
-//     const { tracks, onAdd, onRemove, isRemoval } = this.props;
-
-//     return (
-//       <div className="TrackList">
-//         {tracks.map(track => {
-//           return (
-//             <Track
-//               track={track}
-//               key={track.id}
-//               onAdd={onAdd}
-//               onRemove={onRemove}
-//               isRemoval={isRemoval}
-//             />
-//           );
-//         })}
-//       </div>
-//     );
-//   }
-// }
