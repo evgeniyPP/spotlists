@@ -1,0 +1,83 @@
+body,
+html,
+#root {
+  margin: 0;
+  height: 100%;
+  font-family: Montserrat, sans-serif;
+}
+
+html {
+  font-size: 18px;
+}
+
+h1 {
+  padding: 1rem 0;
+  background-color: #010c3f;
+  text-align: center;
+  font-size: 1.88rem;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1 .highlight {
+  color: #e4c43d;
+}
+
+h2 {
+  font-size: 1.55rem;
+}
+
+button {
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  width: 8.11rem;
+  padding: 0.77rem 0;
+  border-radius: 54px;
+  background-color: #010c3f;
+  text-align: center;
+  font-size: 0.833rem;
+  transition: background-color 0.25s;
+  border: 0px;
+  color: #e4c43d;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: rgba(1, 12, 63, 0.7);
+}
+
+input {
+  font-family: Montserrat, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 0 10% 4rem 10%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    url('./background.png') no-repeat 50% 50%;
+
+  background-size: cover;
+  font-weight: 500;
+  color: #fff;
+}
+
+.playlist {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1020px) {
+  .playlist {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .app {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
