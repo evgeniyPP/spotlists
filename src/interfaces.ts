@@ -25,6 +25,11 @@ export interface IAction {
   payload: any;
 }
 
+export interface IAccessToken {
+  status: boolean;
+  accessToken?: string;
+}
+
 export type IFrom = 'playlist' | 'search';
 
 export type IHandler = {

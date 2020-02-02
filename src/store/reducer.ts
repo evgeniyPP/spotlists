@@ -6,6 +6,12 @@ const initialState: IState = {
   playlistTracks: []
 };
 
+const savedData = JSON.parse(localStorage.getItem('spotlists/data')!) || null;
+if (savedData) {
+  initialState.playlistName = savedData.playlistName;
+  initialState.playlistTracks = savedData.playlistTracks;
+}
+
 const handlers: IHandler = {
   ADD_TRACK: (state, action) =>
     action?.payload && !state.playlistTracks.find(savedTrack => savedTrack.id === action.payload.id)

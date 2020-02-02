@@ -3,24 +3,36 @@ const clientId = '55ea3ac239044c8ca84ab4a6125c783f';
 const redirectUri = 'https://epp-spotlists.herokuapp.com/';
 
 export default {
-  checkAccessToken() {
-    return Boolean(accessToken);
-  },
   getAccessToken() {
-    if (accessToken)
-      return {
-        status: true,
-        accessToken
-      };
+    const auth = JSON.parse(localStorage.getItem('spotlists/auth')) || null;
+    if (auth) {
+      if (auth.expirationDate >= Date.now()) {
+        return {
+          status: true,
+          accessToken: auth.token
+        };
+      } else {
+        localStorage.removeItem('spotlists/auth');
+        localStorage.removeItem('spotlists/data');
+      }
+    } else {
+      localStorage.removeItem('spotlists/data');
+    }
 
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
     if (accessTokenMatch && expiresInMatch) {
       accessToken = accessTokenMatch[1];
-      const expiresIn = Number(expiresInMatch[1]);
-      window.setTimeout(() => (accessToken = ''), expiresIn * 1000);
+      const expiresIn = Number(expiresInMatch[1]) * 1000;
       window.history.pushState('Access Token', null, '/');
+      localStorage.setItem(
+        'spotlists/auth',
+        JSON.stringify({
+          token: accessToken,
+          expirationDate: Date.now() + expiresIn
+        })
+      );
       return {
         status: true,
         accessToken

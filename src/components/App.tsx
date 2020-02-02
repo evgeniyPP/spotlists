@@ -5,19 +5,33 @@ import Playlist from './Playlist';
 import Modal from './Modal';
 import Preloader from './Preloader';
 import Spotify from '../spotify';
+import { IAccessToken, IState } from '../interfaces';
 import styles from '../styles/App.module.css';
+import { useSelector } from 'react-redux';
 
 const App: React.FC = _ => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const playlistName = useSelector((state: IState) => state.playlistName);
+  const playlistTracks = useSelector((state: IState) => state.playlistTracks);
 
   useEffect(() => {
-    const accessToken: { status: boolean; accessToken?: string } = Spotify.getAccessToken();
+    const accessToken: IAccessToken = Spotify.getAccessToken();
     if (!accessToken.status) {
       setShowModal(true);
     }
     setLoading(false);
-  }, []);
+
+    window.onbeforeunload = () => {
+      localStorage.setItem(
+        'spotlists/data',
+        JSON.stringify({
+          playlistName,
+          playlistTracks
+        })
+      );
+    };
+  }, [playlistName, playlistTracks]);
 
   if (loading) {
     return <Preloader />;
